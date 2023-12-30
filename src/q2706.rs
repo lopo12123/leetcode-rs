@@ -1,5 +1,6 @@
 struct Solution;
 
+#[allow(unused)]
 impl Solution {
     pub fn buy_choco(prices: Vec<i32>, money: i32) -> i32 {
         let mut p1 = i32::MAX;
