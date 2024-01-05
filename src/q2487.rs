@@ -1,3 +1,5 @@
+use std::ops::Add;
+
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -19,11 +21,13 @@ struct Solution;
 
 impl Solution {
     pub fn remove_nodes(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let head_inner = head.unwrap();
+
         // List of tuple represents (val, index)
         let mut stack = vec![];
 
         // walk through
-        let mut ptr = &head.unwrap();
+        let mut ptr = &head_inner;
         let mut ctr = 0i32;
         loop {
             // push
@@ -52,9 +56,9 @@ impl Solution {
         // fixed head
         let mut new_head: Option<Box<ListNode>> = None;
         // last kept node
-        let mut new_tail: Option<&Box<ListNode>> = None;
+        let mut new_tail: Option<Box<ListNode>> = None;
         // pointer
-        let mut ptr = &head.unwrap();
+        let mut ptr = &head_inner;
         // counter
         let mut ctr = 0i32;
         loop {
@@ -64,24 +68,25 @@ impl Solution {
                     // re-assign head (init tail as well)
                     None => {
                         new_head = Some(ptr.to_owned());
-                        new_tail = new_head.as_ref();
+                        new_tail = new_head.to_owned();
                     }
                     // re-assign next
-                    Some(tail) => {
-                        *tail.next = Some(ptr.to_owned());
-                        // tail = ptr;
+                    Some(ref mut tail) => {
+                        // tail.next = Some(ptr.to_owned());
+                        let _ = std::mem::replace(&mut tail.next, Some(ptr.to_owned()));
+                        new_tail = Some(ptr.to_owned());
                     }
                 }
             }
 
-            // forward
-            ptr = ptr.as_ref().unwrap().next;
-            ctr += 1;
-
             // stop signal
+            ctr += 1;
             if ctr == stack.len() as i32 {
                 break;
             }
+
+            // forward
+            ptr = ptr.as_ref().next.as_ref().unwrap();
         };
 
         new_head
