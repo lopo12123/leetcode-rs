@@ -14,8 +14,8 @@ impl Solution {
             scanned.insert(*enu.1, enu.0 as i32);
         }
 
-        // never
-        vec![]
+        // use macro rather `vec![]`
+        unreachable!()
     }
 }
 
