@@ -1,5 +1,3 @@
-use std::ops::Add;
-
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -111,7 +109,7 @@ mod unit_test {
     #[test]
     fn t() {
         let l1 = list_builder(vec![5, 2, 13, 3, 8]);
-        let l2 = list_builder(vec![1, 1, 1, 1, 1]);
+        let _l2 = list_builder(vec![1, 1, 1, 1, 1]);
 
         println!("{:#?}", Solution::remove_nodes(l1));
         // println!("{:?}", Solution::remove_nodes(l2));
