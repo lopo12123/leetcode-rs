@@ -1,5 +1,7 @@
+#[allow(unused)]
 struct Solution;
 
+#[allow(unused)]
 impl Solution {
     const PATCH: [i32; 3] = [2, 0, 1];
 
