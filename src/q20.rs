@@ -19,7 +19,7 @@ impl Solution {
                 if stack.last().is_some_and(|top| top + &v == 0) {
                     stack.pop();
                 } else {
-                    stack.push(v);
+                    return false;
                 }
             }
         }
