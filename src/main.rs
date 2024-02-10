@@ -38,6 +38,7 @@ mod q2861;
 mod q365;
 mod q2670;
 mod q1686;
+mod q94;
 
 fn main() {
     println!("Hello, world!");
