@@ -60,6 +60,7 @@ mod q2580;
 mod q2908;
 mod q2952;
 mod q331;
+mod q2810;
 mod q1948;
 mod q2192;
 
