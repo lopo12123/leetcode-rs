@@ -8,13 +8,17 @@ impl Solution {
         } else if len == 2 {
             nums[0].max(nums[1])
         } else {
-            let mut dp = vec![nums[0], nums[0].max(nums[1])];
+            // (even, odd)
+            let mut dp = (nums[0], nums[0].max(nums[1]));
 
             for i in 2..len {
-                dp.push(dp[i - 1].max(dp[i - 2] + nums[i]))
+                if i % 2 == 0 {
+                    dp.0 = dp.1.max(dp.0 + nums[i]);
+                } else {
+                    dp.1 = dp.0.max(dp.1 + nums[i]);
+                }
             }
-
-            dp[len - 1]
+            dp.0.max(dp.1)
         }
     }
 }
