@@ -38,6 +38,7 @@ impl SnapshotArray {
     }
 }
 
+#[cfg(test)]
 #[test]
 fn t() {
     let mut obj = SnapshotArray::new(2);
