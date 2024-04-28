@@ -22,9 +22,3 @@ impl Solution {
         String::from_iter(code)
     }
 }
-
-#[test]
-fn t() {
-    let r = Solution::base_neg2(2);
-    println!("{}", r);
-}
